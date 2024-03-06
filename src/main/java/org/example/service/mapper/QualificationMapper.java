@@ -25,8 +25,6 @@ public interface QualificationMapper {
     })
     QualificationEntity toEntity(QualificationUpdateForm form);
 
-    QualificationEntity toEntity(QualificationDto dto);
-
     QualificationDto toDto(QualificationEntity entity);
 
     QualificationSimpleDto toSimpleDto(QualificationEntity entity);
