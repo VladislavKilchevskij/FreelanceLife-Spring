@@ -7,7 +7,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{};
+        return new Class<?>[]{DatasourceConfig.class, ValidationConfig.class, YamlPropertiesConfig.class};
     }
 
     @Override

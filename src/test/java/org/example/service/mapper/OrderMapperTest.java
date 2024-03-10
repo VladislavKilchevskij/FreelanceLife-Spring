@@ -1,6 +1,9 @@
 package org.example.service.mapper;
 
+import org.example.config.DatasourceConfig;
+import org.example.config.ValidationConfig;
 import org.example.config.WebMvcConfig;
+import org.example.config.YamlPropertiesConfig;
 import org.example.controller.forms.OrderSaveForm;
 import org.example.controller.forms.OrderUpdateForm;
 import org.example.model.OrderEntity;
@@ -15,7 +18,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringJUnitWebConfig(WebMvcConfig.class)
+@SpringJUnitWebConfig({WebMvcConfig.class, ValidationConfig.class, DatasourceConfig.class, YamlPropertiesConfig.class})
 class OrderMapperTest {
 
     @Autowired

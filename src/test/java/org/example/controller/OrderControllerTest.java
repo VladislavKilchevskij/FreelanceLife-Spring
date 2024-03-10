@@ -1,21 +1,16 @@
 package org.example.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.config.WebMvcConfig;
 import org.example.controller.forms.FreelancerUpdateForm;
 import org.example.controller.forms.OrderSaveForm;
 import org.example.controller.forms.OrderUpdateForm;
 import org.example.service.OrderService;
 import org.example.service.dto.OrderDto;
+import org.example.service.impl.OrderServiceImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
@@ -30,15 +25,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
-@SpringJUnitWebConfig(WebMvcConfig.class)
-@ExtendWith(MockitoExtension.class)
 class OrderControllerTest {
     private MockMvc mockMvc;
     private static ObjectMapper objectMapper;
-    @Mock
     private OrderService service;
-    @InjectMocks
-    private OrderController controller;
 
     @BeforeAll
     static void beforeAll() {
@@ -47,6 +37,8 @@ class OrderControllerTest {
 
     @BeforeEach
     void beforeEach() {
+        service = mock(OrderServiceImpl.class);
+        OrderController controller = new OrderController(service);
         mockMvc = standaloneSetup(controller).build();
     }
 

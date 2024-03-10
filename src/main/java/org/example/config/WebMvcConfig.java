@@ -13,7 +13,13 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "org.example")
+@ComponentScan(basePackages = {
+        "org.example.controller",
+        "org.example.exception",
+        "org.example.handler",
+        "org.example.server",
+        "org.example.service"
+})
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 
